@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: #c47f1f;
+    --gold-light: #e8bc6e;
+    --earth: #92400e;
+    --forest: #287455;
+    --terra: #cd3f1f;
+    --cream: #fdf8f0;
+    --dark: #1a1207;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background-color: var(--cream);
+    color: var(--dark);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-amber-600 text-white font-medium px-6 py-3 rounded-full 
+           hover:bg-amber-700 transition-all duration-200 
+           shadow-lg hover:shadow-amber-200 hover:-translate-y-0.5
+           active:translate-y-0 font-body;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-amber-700 font-medium px-6 py-3 rounded-full 
+           border-2 border-amber-300 hover:bg-amber-50 
+           transition-all duration-200 font-body;
+  }
+
+  .btn-ghost {
+    @apply text-amber-700 font-medium px-4 py-2 rounded-full 
+           hover:bg-amber-50 transition-all duration-200 font-body;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl shadow-sm border border-amber-100 
+           hover:shadow-lg hover:border-amber-200 transition-all duration-300;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-bold text-amber-900 leading-tight;
+  }
+
+  .section-subtitle {
+    @apply font-body text-lg text-amber-700/70 leading-relaxed;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-amber-200 
+           bg-white font-body text-amber-900
+           focus:outline-none focus:border-amber-400 
+           placeholder:text-amber-300 transition-colors;
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(circle, #e8bc6e 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .pattern-kente {
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(196,127,31,0.08) 10px, rgba(196,127,31,0.08) 20px),
+      repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(196,127,31,0.05) 10px, rgba(196,127,31,0.05) 20px);
+  }
+
+  .gradient-warm {
+    background: linear-gradient(135deg, #fdf8f0 0%, #faefd8 50%, #f3d9a8 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #c47f1f, #cd3f1f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #e8bc6e;
+  border-radius: 3px;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+/* Decorative elements */
+.ornament::before,
+.ornament::after {
+  content: '✦';
+  color: var(--gold-light);
+  margin: 0 8px;
+  font-size: 0.75em;
+}
+
+/* Animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 127, 31, 0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(196, 127, 31, 0); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
